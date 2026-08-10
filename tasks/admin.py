@@ -14,6 +14,14 @@ class WorkerAdmin(UserAdmin):
     list_display = ("id", "username", "email", "position", "is_staff")
     list_filter = ("position", "is_staff", "is_active")
 
+    fieldsets = UserAdmin.fieldsets + (
+        ("Task information", {"fields": ("position",)}),
+    )
+
+    add_fieldsets = UserAdmin.add_fieldsets + (
+        ("Task information", {"fields": ("position",)}),
+    )
+
 
 @admin.register(TaskType)
 class TaskTypeAdmin(admin.ModelAdmin):
