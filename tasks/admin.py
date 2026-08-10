@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
-from tasks.models import Position, Worker, TaskType
+from tasks.models import Position, Worker, TaskType, Task
 
 
 @admin.register(Position)
@@ -18,3 +18,16 @@ class WorkerAdmin(UserAdmin):
 @admin.register(TaskType)
 class TaskTypeAdmin(admin.ModelAdmin):
     list_display = ("id", "name")
+
+
+@admin.register(Task)
+class TaskAdmin(admin.ModelAdmin):
+    list_display = (
+        "id",
+        "name",
+        "task_type",
+        "deadline",
+        "is_completed",
+        "priority",
+    )
+    list_filter = ("task_type", "is_completed", "priority")
