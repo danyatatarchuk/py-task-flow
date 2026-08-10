@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ task.name }}</title>
+</head>
+<body>
+    <h1>{{ task.name }}</h1>
+
+    <p>{{ task.description }}</p>
+
+    <p>Deadline: {{ task.deadline }}</p>
+
+    <p>Priority: {{ task.get_priority_display }}</p>
+
+    <p>Task type: {{ task.task_type }}</p>
+
+    <h2>Assignees</h2>
+
+    <ul>
+        {% for worker in task.assignees.all %}
+            <li>{{ worker.username }}</li>
+        {% empty %}
+            <li>No assignees.</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'task-list' %}">Back to tasks</a>
+</body>
+</html>
