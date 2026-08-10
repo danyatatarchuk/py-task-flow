@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tasks</title>
+</head>
+<body>
+    <h1>Tasks</h1>
+
+    {% for task in tasks %}
+        <h2>{{ task.name }}</h2>
+        <p>{{ task.description }}</p>
+        <p>Deadline: {{ task.deadline }}</p>
+        <p>Priority: {{ task.get_priority_display }}</p>
+        <p>Task type: {{ task.task_type }}</p>
+    {% empty %}
+        <p>No tasks available.</p>
+    {% endfor %}
+</body>
+</html>
