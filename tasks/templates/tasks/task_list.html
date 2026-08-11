@@ -8,13 +8,32 @@
     <h1>Tasks</h1>
 
     {% for task in tasks %}
-        <h2>{{ task.name }}</h2>
-        <p>{{ task.description }}</p>
+        <h2>
+            <a href="{% url 'task-detail' task.pk %}">
+                {{ task.name }}
+            </a>
+        </h2>
+
+        <p>Description: {{ task.description }}</p>
         <p>Deadline: {{ task.deadline }}</p>
+
+        <p>
+            Status:
+            {% if task.is_completed %}
+                Completed
+            {% else %}
+                Not completed
+            {% endif %}
+        </p>
+
         <p>Priority: {{ task.get_priority_display }}</p>
         <p>Task type: {{ task.task_type }}</p>
+
+        <hr>
     {% empty %}
         <p>No tasks available.</p>
     {% endfor %}
+
+    <a href="{% url 'task-create' %}">Create task</a>
 </body>
 </html>
