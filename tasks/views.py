@@ -8,7 +8,7 @@ from django.views.generic import (
 )
 
 from tasks.forms import TaskForm
-from tasks.models import Task
+from tasks.models import Task, Worker
 
 
 class TaskListView(ListView):
@@ -43,3 +43,15 @@ class TaskDeleteView(DeleteView):
     model = Task
     template_name = "tasks/task_confirm_delete.html"
     success_url = reverse_lazy("task-list")
+
+
+class WorkerListView(ListView):
+    model = Worker
+    template_name = "tasks/worker_list.html"
+    context_object_name = "workers"
+
+
+class WorkerDetailView(DetailView):
+    model = Worker
+    template_name = "tasks/worker_detail.html"
+    context_object_name = "worker"

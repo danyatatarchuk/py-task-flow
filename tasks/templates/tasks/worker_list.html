@@ -1,0 +1,18 @@
+<h1>Workers</h1>
+
+{% for worker in workers %}
+    <h2>
+        <a href="{% url 'worker-detail' worker.pk %}">
+            {{ worker.username }}
+        </a>
+    </h2>
+
+    <p>First name: {{ worker.first_name }}</p>
+    <p>Last name: {{ worker.last_name }}</p>
+    <p>Email: {{ worker.email }}</p>
+    <p>Position: {{ worker.position }}</p>
+{% empty %}
+    <p>No workers available.</p>
+{% endfor %}
+
+<a href="{% url 'task-list' %}">Back to tasks</a>
