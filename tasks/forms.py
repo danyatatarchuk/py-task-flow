@@ -10,6 +10,7 @@ class TaskForm(forms.ModelForm):
             "name",
             "description",
             "deadline",
+            "is_completed",
             "priority",
             "task_type",
             "assignees",

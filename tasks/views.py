@@ -1,4 +1,4 @@
-from django.views.generic import CreateView, DetailView, ListView
+from django.views.generic import CreateView, DetailView, ListView, UpdateView
 
 from tasks.forms import TaskForm
 from tasks.models import Task
@@ -21,3 +21,12 @@ class TaskCreateView(CreateView):
     form_class = TaskForm
     template_name = "tasks/task_form.html"
     success_url = "/tasks/"
+
+
+class TaskUpdateView(UpdateView):
+    model = Task
+    form_class = TaskForm
+    template_name = "tasks/task_update.html"
+
+    def get_success_url(self):
+        return f"/tasks/{self.object.pk}/"

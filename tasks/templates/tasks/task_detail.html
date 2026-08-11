@@ -11,6 +11,15 @@
 
     <p>Deadline: {{ task.deadline }}</p>
 
+    <p>
+        Status:
+        {% if task.is_completed %}
+            Completed
+        {% else %}
+            Not completed
+        {% endif %}
+    </p>
+
     <p>Priority: {{ task.get_priority_display }}</p>
 
     <p>Task type: {{ task.task_type }}</p>
@@ -26,5 +35,6 @@
     </ul>
 
     <a href="{% url 'task-list' %}">Back to tasks</a>
+    <a href="{% url 'task-update' task.pk %}">Edit task</a>
 </body>
 </html>
