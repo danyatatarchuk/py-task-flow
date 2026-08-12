@@ -9,17 +9,14 @@ class Command(BaseCommand):
         username = "user"
         password = "user12345"
 
+        position = Position.objects.filter(name="Developer").first()
+
+        if not position:
+            position = Position.objects.create(name="Developer")
+
         if Worker.objects.filter(username=username).exists():
             self.stdout.write(
                 self.style.WARNING("Test user already exists.")
-            )
-            return
-
-        position = Position.objects.first()
-
-        if not position:
-            self.stdout.write(
-                self.style.ERROR("No positions found.")
             )
             return
 
@@ -31,6 +28,6 @@ class Command(BaseCommand):
 
         self.stdout.write(
             self.style.SUCCESS(
-                f"Test user created with position: {position.name}"
+                "Test user created successfully."
             )
         )
