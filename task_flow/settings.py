@@ -31,6 +31,9 @@ ALLOWED_HOSTS = os.environ.get(
     "localhost,127.0.0.1"
 ).split(",")
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://py-task-flow.onrender.com",
+]
 
 # Application definition
 
